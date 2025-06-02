@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CA Static</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: monospace;
+      cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAALklEQVR4nO3SsREAMAjEsD/23zk0zE'), auto;
+    }
+
+    body {
+      background: #000 url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fb5482a9-1ec4-4f6a-a28a-84d267f89594/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZiNTQ4MmE5LTFlYzQtNGY2YS1hMjhhLTg0ZDI2N2Y4OTU5NFwvZDNqbWJqcS05ZDUyZTg5Yy1lNmViLTQwYWItOTUxNy04NzU0YmE5YTNiY2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mg-Gz7pjrmku41ylRehaOJTtegctwYnAARUBMXfjm4k') center center / cover no-repeat;
+    }
+
+    .ca-display {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #e0e0e0;
+      font-size: 2.2rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border: 2px dashed #aaa;
+      border-radius: 6px;
+      user-select: all;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        text-shadow: 2px 0 #ff0000, -2px 0 #00ffff, 0 0 2px #aaa;
+        transform: translate(-50%, -50%) skew(0.5deg);
+      }
+      20% {
+        text-shadow: -2px 0 #00ff00, 2px 0 #ff00ff, 0 0 2px #bbb;
+        transform: translate(-49.5%, -50.5%) skew(-0.5deg);
+      }
+      40% {
+        text-shadow: 2px 2px #0000ff, -2px -2px #ffff00, 0 0 2px #ccc;
+        transform: translate(-50.2%, -49.8%) skew(0.2deg);
+      }
+      60% {
+        text-shadow: -1px 1px #ff0000, 1px -1px #00ffff, 0 0 2px #aaa;
+        transform: translate(-50%, -50%) skew(0deg);
+      }
+      80% {
+        text-shadow: 1px -1px #00ff00, -1px 1px #ff00ff, 0 0 2px #eee;
+        transform: translate(-50.3%, -50.1%) skew(0.4deg);
+      }
+      100% {
+        text-shadow: 0 0 6px #ffffff, 0 0 2px #aaa;
+        transform: translate(-50%, -50%) skew(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ca-display">CA000000000000x</div>
+  <audio id="staticAudio" autoplay loop muted>
+    <source src="https://cdn.pixabay.com/audio/2023/03/19/audio_1f2dcb8b67.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('staticAudio');
+      audio.muted = false;
+      const playAudio = () => {
+        audio.play().catch(() => {});
+        window.removeEventListener('click', playAudio);
+      };
+      window.addEventListener('click', playAudio);
+    });
+  </script>
+</body>
+</html>
